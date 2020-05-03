@@ -4,6 +4,14 @@
 
 Note: I use this script to rename invoices, to a very particular format:
 
+## Running it
+
+```bash
+./exec.sh invoice.pdf
+```
+
+then, follow the wizard.
+
 ## Resulting format
 
 ```
