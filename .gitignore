@@ -105,4 +105,5 @@ ENV/
 ## Application data
 
 commands.sh
+commands_total.sh
 
