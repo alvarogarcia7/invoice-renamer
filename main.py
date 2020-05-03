@@ -18,13 +18,21 @@ from invoice_wizard import InvoiceWizard
 def main(args):
     """ Main entry point of the app """
     logger.info(args)
+    original_filename = args.file
+    logger.info(f"Original filename={original_filename}")
 
     wizard = InvoiceWizard()
-    date = wizard.parse_date(int(args.default_year))
+    file_commands = FileCommands()
+    file_commands.preview(original_filename)
+
+    date = wizard.parse_date(args.default_year)
     company_name = wizard.parse_company_name()
 
-    file_commands = FileCommands()
-    command = file_commands.compose_move_command(args, company_name, date)
+    # Stub for testing
+    # date="2020-04-03"
+    # company_name = "Company SL"
+
+    command = file_commands.compose_move_command(company_name, date, original_filename)
     file_commands.write_if(command, file=args.execution_pipe)
     logger.info(f"Command ={command}")
     return 0

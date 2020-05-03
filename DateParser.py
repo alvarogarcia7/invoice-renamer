@@ -21,7 +21,7 @@ class DateParser:
             return date_time
 
         if self.default_year is not None:
-            date_time = date_time.replace(year=self.default_year)
+            date_time = date_time.replace(year=int(self.default_year))
 
         date = date_time.date()
 
