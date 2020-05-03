@@ -6,11 +6,26 @@ Note: I use this script to rename invoices, to a my very own particular format.
 
 ## Running it
 
+My workflow is to cumulate all the `mv` commands, then review, then execute at once.
+
+Before and after executing, I create a temporary git repository, so I'm able to go back to the previous state. [^0]
+
+
 ```bash
 ./exec.sh invoice.pdf
 ```
 
-then, follow the wizard.
+Then, follow the wizard.
+
+Then, you can review the commands, if needed.
+
+To execute them:
+
+```
+bash commands_total.sh
+```
+
+[^0]: This is not handled in this script
 
 ## Resulting format
 
