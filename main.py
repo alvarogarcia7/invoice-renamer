@@ -11,7 +11,8 @@ import argparse
 
 from logzero import logger
 
-from DateParser import DateParser
+from file_commands import FileCommands
+from invoice_wizard import InvoiceWizard
 
 
 def main(args):
@@ -27,61 +28,6 @@ def main(args):
     file_commands.write_if(command, file=args.execution_pipe)
     logger.info(f"Command ={command}")
     return 0
-
-
-class FileCommands:
-    @staticmethod
-    def compose_move_command(args, company_name, date):
-        new_filename = " - ".join([date, company_name, args.file])
-        new_filename = f'"{new_filename}"'
-        command = f'mv "{args.file}" {new_filename}'
-        return command
-
-    @staticmethod
-    def write_if(command, file):
-        if file is not None:
-            with open(file, 'w') as file:
-                file.write(command + '\n')
-
-
-class InvoiceWizard:
-    def parse_date(self, default_year):
-        while True:
-            raw_input = self.read_from_user('Enter the date (%d %m, %d/%m, also with %y): ')
-            parsed_date = DateParser(default_year=default_year).reformat(raw_input)
-            if parsed_date is None:
-                continue
-            if self.is_validated_by_user(parsed_date):
-                return parsed_date
-
-    def parse_company_name(self):
-        while True:
-            raw_input = self.read_from_user('Enter the company name: ')
-            if raw_input is None:
-                continue
-            if self.is_validated_by_user(raw_input):
-                return raw_input
-
-    @staticmethod
-    def is_validated_by_user(value):
-        try:
-            raw_input = input(f'Is it valid "{value}"? [Y/n]')
-            clean_input = raw_input.strip()
-            if clean_input.upper() == "Y" or clean_input == "":
-                return value
-        except ValueError as e:
-            logger.info(e)
-            logger.error(f"Did not understand '${raw_input}'")
-        return None
-
-    @staticmethod
-    def read_from_user(prompt):
-        try:
-            raw_input = input(prompt)
-            return raw_input
-        except ValueError as e:
-            logger.info(e)
-            logger.error(f"Did not understand '${raw_input}'")
 
 
 if __name__ == "__main__":
