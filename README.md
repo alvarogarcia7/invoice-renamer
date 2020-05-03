@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Note: I use this script to rename invoices, to a very particular format:
+Note: I use this script to rename invoices, to a my very own particular format.
 
 ## Running it
 
