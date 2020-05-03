@@ -1,6 +1,7 @@
 # Invoice Renamer
 
 ## Purpose
+
 Note: I use this script to rename invoices, to a very particular format:
 
 ## Resulting format
