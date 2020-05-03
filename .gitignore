@@ -101,3 +101,8 @@ ENV/
 
 # Jetbrains / pycharm
 .idea/
+
+## Application data
+
+commands.sh
+
