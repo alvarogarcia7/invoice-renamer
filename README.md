@@ -12,6 +12,7 @@ Before and after executing, I create a temporary git repository, so I'm able to 
 
 
 ```bash
+source .env.sh # To enable the virtualenv
 ./exec.sh invoice.pdf
 ```
 
